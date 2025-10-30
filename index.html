@@ -1,173 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dhirendra Singh — Portfolio</title>
-  <meta name="description" content="Dhirendra Singh — Computer Science student building modern web applications." />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="images/profile.svg" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dhirendra Singh — Portfolio</title>
+	<meta name="description" content="Portfolio of Dhirendra Singh, Computer Science student and web developer.">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="index.html">
-        <img src="images/profile.svg" alt="logo" class="brand-img" />
-        <span class="brand-text">Dhirendra Singh</span>
-      </a>
+	<header class="site-header">
+		<a class="logo" href="index.html">DS</a>
+		<nav class="nav">
+			<a href="index.html" class="active">Home</a>
+			<a href="projects.html">Projects</a>
+			<a href="about.html">About</a>
+			<a href="contact.html">Contact</a>
+			<button id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+		</nav>
+	</header>
 
-      <nav id="main-nav" class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a class="btn small" href="resume.pdf" download>Download Resume</a>
-        <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">🌙</button>
-      </nav>
+	<main>
+		<section class="hero">
+			<div class="hero-text">
+				<h1>Hi, I’m <span class="accent">Dhirendra Singh</span></h1>
+				<p class="typewriter" data-text="Computer Science student • Web Developer • Tech enthusiast"></p>
+				<p class="sub">I build modern, fast, and responsive web applications with a focus on clean UI and great DX.</p>
+				<div class="hero-cta">
+					<a class="btn primary" href="projects.html">View Projects</a>
+					<a class="btn" href="resume.pdf" download>Download Resume</a>
+				</div>
+			</div>
+			<div class="hero-media">
+				<img src="images/profile.jpg" alt="Portrait of Dhirendra Singh">
+			</div>
+		</section>
 
-      <button id="nav-toggle" class="hamburger" aria-label="Open menu">☰</button>
-    </div>
-  </header>
+		<section class="section" id="featured-projects">
+			<div class="section-head">
+				<h2>Featured Projects</h2>
+				<a class="link" href="projects.html">See all</a>
+			</div>
+			<div class="grid projects">
+				<article class="card">
+					<img src="images/project-1.jpg" alt="Project 1 screenshot">
+					<div class="card-body">
+						<h3>DevNotes</h3>
+						<p>A markdown note app with tags, search, and offline support.</p>
+						<ul class="tags">
+							<li>HTML</li><li>CSS</li><li>JS</li>
+						</ul>
+						<div class="actions">
+							<a class="btn small" href="#" target="_blank" rel="noopener">Live</a>
+							<a class="btn small ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+						</div>
+					</div>
+				</article>
+				<article class="card">
+					<img src="images/project-2.jpg" alt="Project 2 screenshot">
+					<div class="card-body">
+						<h3>TaskFlow</h3>
+						<p>Kanban-style task manager with drag-and-drop.</p>
+						<ul class="tags">
+							<li>React</li><li>Tailwind</li><li>LocalStorage</li>
+						</ul>
+						<div class="actions">
+							<a class="btn small" href="#" target="_blank" rel="noopener">Live</a>
+							<a class="btn small ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+						</div>
+					</div>
+				</article>
+				<article class="card">
+					<img src="images/project-3.jpg" alt="Project 3 screenshot">
+					<div class="card-body">
+						<h3>API Explorer</h3>
+						<p>REST API dashboard with charts and pagination.</p>
+						<ul class="tags">
+							<li>Flask</li><li>Chart.js</li><li>REST</li>
+						</ul>
+						<div class="actions">
+							<a class="btn small" href="#" target="_blank" rel="noopener">Live</a>
+							<a class="btn small ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <h1 class="hero-title">Hi, I’m <span class="accent">Dhirendra Singh</span></h1>
-          <p class="hero-subtitle" id="typewriter">Computer Science student — building modern web applications.</p>
-          <p class="lead">I build responsive, accessible websites and enjoy learning full-stack development and AI. Currently focused on React and backend APIs.</p>
+		<section class="section split" id="skills">
+			<div>
+				<h2>Skills</h2>
+				<div class="pill-groups">
+					<div>
+						<h4>Languages</h4>
+						<ul class="pills"><li>C++</li><li>Python</li><li>JavaScript</li></ul>
+					</div>
+					<div>
+						<h4>Frameworks</h4>
+						<ul class="pills"><li>React</li><li>Node.js</li><li>Flask</li></ul>
+					</div>
+					<div>
+						<h4>Tools</h4>
+						<ul class="pills"><li>Git</li><li>GitHub</li><li>VS Code</li><li>Figma</li></ul>
+					</div>
+					<div>
+						<h4>Other</h4>
+						<ul class="pills"><li>Responsive Design</li><li>REST APIs</li></ul>
+					</div>
+				</div>
+			</div>
+			<div>
+				<h2>Education</h2>
+				<div class="edu">
+					<p><strong>B.Tech in Computer Science</strong></p>
+					<p>XYZ University • 2022–2026</p>
+					<p class="muted">Relevant: Data Structures, Web Dev, DBMS, OS</p>
+				</div>
+			</div>
+		</section>
+	</main>
 
-          <div class="hero-ctas">
-            <a href="contact.html" class="btn">Hire Me</a>
-            <a href="projects.html" class="btn ghost">View Projects</a>
-            <a href="resume.pdf" class="btn outline" download>Download Resume</a>
-          </div>
+	<footer class="site-footer">
+		<p>© <span id="year"></span> Dhirendra Singh</p>
+		<div class="socials">
+			<a href="mailto:singhdhirendra8919@gmail.com" aria-label="Email">📧</a>
+			<a href="#" aria-label="LinkedIn">💼</a>
+			<a href="#" aria-label="GitHub">💻</a>
+			<a href="resume.pdf" aria-label="Resume">📄</a>
+		</div>
+	</footer>
 
-          <ul class="hero-skills">
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Python</li>
-            <li>Node.js</li>
-            <li>Responsive Design</li>
-          </ul>
-        </div>
-
-        <div class="hero-image">
-          <img src="images/profile.svg" alt="Profile photo" />
-        </div>
-      </div>
-    </section>
-
-    <section class="preview container">
-      <h2>Featured Projects</h2>
-      <div class="projects-grid">
-        <article class="card project-card">
-          <img class="card-thumb" src="images/project1.svg" alt="Project 1 screenshot" />
-          <div class="card-body">
-            <h3><a href="projects.html#project-1">Notes App</a></h3>
-            <p>Simple full-stack notes application with authentication and CRUD features. Learnt REST APIs and JWT auth.</p>
-            <p class="meta">Tech: React, Node.js, Express, MongoDB</p>
-            <div class="card-actions">
-              <a href="#" class="link">Live</a>
-              <a href="#" class="link">GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <img class="card-thumb" src="images/project2.svg" alt="Project 2 screenshot" />
-          <div class="card-body">
-            <h3><a href="projects.html#project-2">Portfolio Template</a></h3>
-            <p>A responsive portfolio template with theme toggle, smooth scroll and accessible navigation.</p>
-            <p class="meta">Tech: HTML, CSS, JS</p>
-            <div class="card-actions">
-              <a href="#" class="link">Live</a>
-              <a href="#" class="link">GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <img class="card-thumb" src="images/project3.svg" alt="Project 3 screenshot" />
-          <div class="card-body">
-            <h3><a href="projects.html#project-3">ML Classifier</a></h3>
-            <p>Prototype image classifier using Python and TensorFlow. Explored model training and deployment ideas.</p>
-            <p class="meta">Tech: Python, TensorFlow</p>
-            <div class="card-actions">
-              <a href="#" class="link">Details</a>
-              <a href="#" class="link">GitHub</a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="center">
-        <a href="projects.html" class="btn">See All Projects</a>
-      </div>
-    </section>
-
-    <section class="about container" id="about">
-      <div class="about-grid">
-        <div>
-          <h2>About Me</h2>
-          <p>I’m a Computer Science student passionate about full-stack web development and machine learning. I enjoy solving problems, building clean user interfaces, and learning new technologies.</p>
-          <p>Currently learning React, TypeScript and exploring backend systems. I like working on projects that combine frontend UX and backend reliability.</p>
-
-          <h3>Education</h3>
-          <p>B.Tech in Computer Science — XYZ University (2022–2026)</p>
-
-          <h3>Tools & Technologies</h3>
-          <ul class="skill-list">
-            <li>JavaScript / TypeScript</li>
-            <li>React / Redux</li>
-            <li>Node.js / Express</li>
-            <li>Python / TensorFlow</li>
-            <li>Git, GitHub, VS Code</li>
-          </ul>
-
-        </div>
-        <div class="about-card card">
-          <h3>Quick facts</h3>
-          <ul class="facts">
-            <li><strong>Location:</strong> Your City, Country</li>
-            <li><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></li>
-            <li><strong>Open to:</strong> Internships, Freelance</li>
-            <li><strong>Available:</strong> Immediately</li>
-          </ul>
-          <a class="btn" href="contact.html">Contact Me</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <a class="brand" href="index.html">
-          <img src="images/profile.svg" alt="logo" class="brand-img" />
-          <span class="brand-text">Dhirendra Singh</span>
-        </a>
-        <p class="muted">Computer Science student building modern web applications.</p>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p><a href="mailto:youremail@example.com">youremail@example.com</a></p>
-        <p><a href="https://github.com/Dhirendra-singh11" target="_blank" rel="noopener">GitHub</a> · <a href="#" target="_blank" rel="noopener">LinkedIn</a></p>
-      </div>
-      <div>
-        <h4>Links</h4>
-        <nav class="footer-links">
-          <a href="projects.html">Projects</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </div>
-    <div class="container center muted small">© <span id="year"></span> Dhirendra Singh — Built with ❤️</div>
-  </footer>
-
-  <script src="js/script.js"></script>
+	<script src="js/script.js"></script>
 </body>
 </html>

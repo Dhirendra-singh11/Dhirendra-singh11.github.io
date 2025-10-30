@@ -1,83 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Projects — Dhirendra Singh</title>
-  <link rel="stylesheet" href="css/style.css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Projects — Dhirendra Singh</title>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="index.html">
-        <img src="images/profile.svg" alt="logo" class="brand-img" />
-        <span class="brand-text">Dhirendra Singh</span>
-      </a>
-      <nav id="main-nav" class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="projects.html" class="active">Projects</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a class="btn small" href="resume.pdf" download>Resume</a>
-        <button id="theme-toggle-3" class="btn-icon" aria-label="Toggle theme">🌙</button>
-      </nav>
-      <button id="nav-toggle-3" class="hamburger" aria-label="Open menu">☰</button>
-    </div>
-  </header>
+	<header class="site-header">
+		<a class="logo" href="index.html">DS</a>
+		<nav class="nav">
+			<a href="index.html">Home</a>
+			<a href="projects.html" class="active">Projects</a>
+			<a href="about.html">About</a>
+			<a href="contact.html">Contact</a>
+			<button id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+		</nav>
+	</header>
 
-  <main class="container">
-    <section class="projects-page">
-      <h1>Projects</h1>
-      <p class="lead">Selected projects — each includes a short description, tech stack, and links to the demo or repo.</p>
+	<main class="section">
+		<h1>Projects</h1>
+		<p class="muted">A selection of things I’ve built recently.</p>
 
-      <div class="projects-list">
-        <article id="project-1" class="project">
-          <img src="images/project1.svg" alt="Notes App" />
-          <div class="project-info">
-            <h2>Notes App</h2>
-            <p>A full-stack notes application with user auth, CRUD operations, and a responsive UI. Implemented REST API endpoints and JWT-based authentication.</p>
-            <p class="meta">Tech: React, Node.js, Express, MongoDB</p>
-            <p>
-              <a href="#" class="link">Live demo</a>
-              <a href="#" class="link">GitHub</a>
-            </p>
-          </div>
-        </article>
+		<div class="filters">
+			<button class="chip active" data-filter="all">All</button>
+			<button class="chip" data-filter="frontend">Frontend</button>
+			<button class="chip" data-filter="backend">Backend</button>
+			<button class="chip" data-filter="fullstack">Full-stack</button>
+		</div>
 
-        <article id="project-2" class="project">
-          <img src="images/project2.svg" alt="Portfolio Template" />
-          <div class="project-info">
-            <h2>Portfolio Template</h2>
-            <p>Responsive multi-page portfolio template with dark/light mode, smooth scroll, and accessible navigation. Built for static hosting.</p>
-            <p class="meta">Tech: HTML, CSS, JavaScript</p>
-            <p>
-              <a href="#" class="link">Live demo</a>
-              <a href="#" class="link">GitHub</a>
-            </p>
-          </div>
-        </article>
+		<div class="grid projects filterable">
+			<article class="card" data-cat="frontend">
+				<img src="images/project-1.jpg" alt="DevNotes screenshot">
+				<div class="card-body">
+					<h3>DevNotes</h3>
+					<p>Markdown notes with tags and offline support.</p>
+					<ul class="tags"><li>HTML</li><li>CSS</li><li>JS</li></ul>
+					<div class="actions">
+						<a class="btn small" href="#" target="_blank">Live</a>
+						<a class="btn small ghost" href="#" target="_blank">GitHub</a>
+					</div>
+				</div>
+			</article>
 
-        <article id="project-3" class="project">
-          <img src="images/project3.svg" alt="ML Classifier" />
-          <div class="project-info">
-            <h2>ML Classifier Prototype</h2>
-            <p>Prototype image classifier to experiment with TensorFlow and model training pipelines. Focused on dataset preprocessing and small model experiments.</p>
-            <p class="meta">Tech: Python, TensorFlow</p>
-            <p>
-              <a href="#" class="link">Notebook</a>
-              <a href="#" class="link">GitHub</a>
-            </p>
-          </div>
-        </article>
+			<article class="card" data-cat="fullstack">
+				<img src="images/project-2.jpg" alt="TaskFlow screenshot">
+				<div class="card-body">
+					<h3>TaskFlow</h3>
+					<p>Kanban task manager with drag-and-drop and persistence.</p>
+					<ul class="tags"><li>React</li><li>Tailwind</li><li>LocalStorage</li></ul>
+					<div class="actions">
+						<a class="btn small" href="#" target="_blank">Live</a>
+						<a class="btn small ghost" href="#" target="_blank">GitHub</a>
+					</div>
+				</div>
+			</article>
 
-      </div>
-    </section>
-  </main>
+			<article class="card" data-cat="backend">
+				<img src="images/project-3.jpg" alt="API Explorer screenshot">
+				<div class="card-body">
+					<h3>API Explorer</h3>
+					<p>REST API dashboard with authentication and charts.</p>
+					<ul class="tags"><li>Flask</li><li>Chart.js</li><li>REST</li></ul>
+					<div class="actions">
+						<a class="btn small" href="#" target="_blank">Live</a>
+						<a class="btn small ghost" href="#" target="_blank">GitHub</a>
+					</div>
+				</div>
+			</article>
+		</div>
+	</main>
 
-  <footer class="site-footer">
-    <div class="container center muted small">© <span id="year-3"></span> Dhirendra Singh</div>
-  </footer>
+	<footer class="site-footer">
+		<p>© <span id="year"></span> Dhirendra Singh</p>
+	</footer>
 
-  <script src="js/script.js"></script>
+	<script src="js/script.js"></script>
 </body>
 </html>

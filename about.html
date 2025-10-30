@@ -1,69 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About — Dhirendra Singh</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>About — Dhirendra Singh</title>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="index.html">
-        <img src="images/profile.svg" alt="logo" class="brand-img" />
-        <span class="brand-text">Dhirendra Singh</span>
-      </a>
-      <nav id="main-nav" class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html" class="active">About</a>
-        <a href="contact.html">Contact</a>
-        <a class="btn small" href="resume.pdf" download>Download Resume</a>
-        <button id="theme-toggle-2" class="btn-icon" aria-label="Toggle theme">🌙</button>
-      </nav>
-      <button id="nav-toggle-2" class="hamburger" aria-label="Open menu">☰</button>
-    </div>
-  </header>
+	<header class="site-header">
+		<a class="logo" href="index.html">DS</a>
+		<nav class="nav">
+			<a href="index.html">Home</a>
+			<a href="projects.html">Projects</a>
+			<a href="about.html" class="active">About</a>
+			<a href="contact.html">Contact</a>
+			<button id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+		</nav>
+	</header>
 
-  <main class="container">
-    <section class="about-page">
-      <div class="about-page-grid">
-        <div class="about-me">
-          <h1>About Me</h1>
-          <p>I’m a final-year Computer Science student passionate about full-stack development and machine learning. I enjoy crafting clean, responsive user interfaces and building reliable backend services.</p>
+	<main class="section">
+		<h1>About Me</h1>
+		<div class="about-layout">
+			<img class="about-photo" src="images/profile.jpg" alt="Portrait of Dhirendra Singh">
+			<div>
+				<p>I’m a final-year Computer Science student with a strong interest in full‑stack web development. I love creating clean, responsive websites and learning new technologies.</p>
+				<p>Currently focused on building projects with React and improving backend skills with Node.js and Flask.</p>
 
-          <h2>Story</h2>
-          <p>I started coding in high school and quickly fell in love with web development. Over time I’ve built projects ranging from single-page apps to small backend APIs. I value readable code, accessibility and fast user experiences.</p>
+				<h2>Skills</h2>
+				<ul class="pills"><li>C++</li><li>Python</li><li>JavaScript</li><li>React</li><li>Node.js</li><li>Flask</li><li>Git</li><li>Figma</li></ul>
 
-          <h2>Current Focus</h2>
-          <p>Learning React, TypeScript and building projects that connect frontend and backend. Exploring ML model prototyping in Python.</p>
-        </div>
+				<h2>Education</h2>
+				<p><strong>B.Tech in Computer Science</strong><br>XYZ University • 2022–2026</p>
 
-        <aside class="card about-aside">
-          <img src="images/profile.svg" alt="Profile" class="about-photo" />
-          <h3>Education</h3>
-          <p>B.Tech in Computer Science — XYZ University (2022–2026)</p>
+				<h2>Achievements</h2>
+				<ul class="list">
+					<li>Completed courses in Web Development and Data Structures</li>
+					<li>Participated in hackathons and coding competitions</li>
+				</ul>
 
-          <h3>Skills</h3>
-          <ul class="skill-list">
-            <li>JavaScript / React</li>
-            <li>Python / ML</li>
-            <li>Node.js / Express</li>
-            <li>HTML / CSS / Responsive Design</li>
-            <li>Git, GitHub</li>
-          </ul>
+				<div class="about-cta">
+					<a class="btn primary" href="resume.pdf" download>Download Resume</a>
+					<a class="btn" href="projects.html">Explore Projects</a>
+				</div>
+			</div>
+		</div>
+	</main>
 
-          <a class="btn" href="contact.html">Get in touch</a>
-        </aside>
-      </div>
-    </section>
-  </main>
+	<footer class="site-footer">
+		<p>© <span id="year"></span> Dhirendra Singh</p>
+	</footer>
 
-  <footer class="site-footer">
-    <div class="container center muted small">© <span id="year-2"></span> Dhirendra Singh</div>
-  </footer>
-
-  <script src="js/script.js"></script>
+	<script src="js/script.js"></script>
 </body>
 </html>

@@ -1,75 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact — Dhirendra Singh</title>
-  <link rel="stylesheet" href="css/style.css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contact — Dhirendra Singh</title>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="index.html">
-        <img src="images/profile.svg" alt="logo" class="brand-img" />
-        <span class="brand-text">Dhirendra Singh</span>
-      </a>
-      <nav id="main-nav" class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html">About</a>
-        <a href="contact.html" class="active">Contact</a>
-        <a class="btn small" href="resume.pdf" download>Resume</a>
-        <button id="theme-toggle-4" class="btn-icon" aria-label="Toggle theme">🌙</button>
-      </nav>
-      <button id="nav-toggle-4" class="hamburger" aria-label="Open menu">☰</button>
-    </div>
-  </header>
+	<header class="site-header">
+		<a class="logo" href="index.html">DS</a>
+		<nav class="nav">
+			<a href="index.html">Home</a>
+			<a href="projects.html">Projects</a>
+			<a href="about.html">About</a>
+			<a href="contact.html" class="active">Contact</a>
+			<button id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+		</nav>
+	</header>
 
-  <main class="container">
-    <section class="contact-page">
-      <h1>Contact</h1>
-      <p class="lead">Have a project, internship opportunity, or just want to say hi? Send a message and I’ll get back to you.</p>
+	<main class="section">
+		<h1>Get in touch</h1>
+		<p class="muted">I’m open to internships, freelance work, and collaborations.</p>
 
-      <div class="contact-grid">
-        <form id="contact-form" class="card contact-form" action="mailto:youremail@example.com" method="post" enctype="text/plain">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" required placeholder="Your name" />
-          </label>
+		<div class="contact-cards">
+			<a class="card row" href="mailto:singhdhirendra8919@gmail.com">
+				<div class="icon">📧</div>
+				<div><strong>Email</strong><br>singhdhirendra8919@gmail.com</div>
+			</a>
+			<a class="card row" href="#" target="_blank" rel="noopener">
+				<div class="icon">💼</div>
+				<div><strong>LinkedIn</strong><br>linkedin.com/in/your-handle</div>
+			</a>
+			<a class="card row" href="#" target="_blank" rel="noopener">
+				<div class="icon">💻</div>
+				<div><strong>GitHub</strong><br>github.com/your-handle</div>
+			</a>
+			<a class="card row" href="resume.pdf" target="_blank" rel="noopener">
+				<div class="icon">📄</div>
+				<div><strong>Resume</strong><br>View or download PDF</div>
+			</a>
+		</div>
 
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" required placeholder="youremail@example.com" />
-          </label>
+		<form class="contact-form" name="contact" method="POST" data-netlify="true">
+			<input type="hidden" name="form-name" value="contact">
+			<div class="grid2">
+				<input aria-label="Your name" type="text" name="name" placeholder="Your name" required>
+				<input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
+			</div>
+			<textarea aria-label="Your message" name="message" rows="6" placeholder="Your message..." required></textarea>
+			<button class="btn primary" type="submit">Send message</button>
+		</form>
+	</main>
 
-          <label>
-            <span>Message</span>
-            <textarea name="message" rows="6" required placeholder="Tell me about your project or opportunity"></textarea>
-          </label>
+	<footer class="site-footer">
+		<p>© <span id="year"></span> Dhirendra Singh</p>
+	</footer>
 
-          <div class="form-actions">
-            <button type="submit" class="btn">Send</button>
-            <button type="reset" class="btn ghost">Reset</button>
-          </div>
-        </form>
-
-        <aside class="card contact-info">
-          <h3>Contact Info</h3>
-          <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-          <p><strong>GitHub:</strong> <a href="https://github.com/Dhirendra-singh11" target="_blank" rel="noopener">github.com/Dhirendra-singh11</a></p>
-          <p><strong>LinkedIn:</strong> <a href="#" target="_blank">linkedin.com/in/yourprofile</a></p>
-
-          <h4>Download</h4>
-          <a class="btn" href="resume.pdf" download>Download Resume</a>
-        </aside>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container center muted small">© <span id="year-4"></span> Dhirendra Singh</div>
-  </footer>
-
-  <script src="js/script.js"></script>
+	<script src="js/script.js"></script>
 </body>
 </html>
