@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Dhirendra Singh</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">
+        <img src="images/profile.svg" alt="logo" class="brand-img" />
+        <span class="brand-text">Dhirendra Singh</span>
+      </a>
+      <nav id="main-nav" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a class="btn small" href="resume.pdf" download>Resume</a>
+        <button id="theme-toggle-4" class="btn-icon" aria-label="Toggle theme">🌙</button>
+      </nav>
+      <button id="nav-toggle-4" class="hamburger" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="contact-page">
+      <h1>Contact</h1>
+      <p class="lead">Have a project, internship opportunity, or just want to say hi? Send a message and I’ll get back to you.</p>
+
+      <div class="contact-grid">
+        <form id="contact-form" class="card contact-form" action="mailto:youremail@example.com" method="post" enctype="text/plain">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" required placeholder="Your name" />
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required placeholder="youremail@example.com" />
+          </label>
+
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="6" required placeholder="Tell me about your project or opportunity"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Send</button>
+            <button type="reset" class="btn ghost">Reset</button>
+          </div>
+        </form>
+
+        <aside class="card contact-info">
+          <h3>Contact Info</h3>
+          <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/Dhirendra-singh11" target="_blank" rel="noopener">github.com/Dhirendra-singh11</a></p>
+          <p><strong>LinkedIn:</strong> <a href="#" target="_blank">linkedin.com/in/yourprofile</a></p>
+
+          <h4>Download</h4>
+          <a class="btn" href="resume.pdf" download>Download Resume</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container center muted small">© <span id="year-4"></span> Dhirendra Singh</div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

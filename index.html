@@ -1,708 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhirendra Singh - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #6366f1;
-            --secondary: #8b5cf6;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --text: #334155;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: all 0.3s;
-        }
-
-        nav.scrolled {
-            padding: 0.5rem 0;
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gradient);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveBackground 20s linear infinite;
-        }
-
-        @keyframes moveBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .hero-content {
-            text-align: center;
-            color: white;
-            z-index: 1;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero .intro {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.85;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-            color: var(--dark);
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--gradient);
-            margin: 1rem auto;
-            border-radius: 2px;
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-        }
-
-        .project-img {
-            width: 100%;
-            height: 200px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .project-desc {
-            color: var(--text);
-            margin-bottom: 1rem;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-tag {
-            background: #e0e7ff;
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .project-link:hover {
-            color: var(--secondary);
-        }
-
-        /* About */
-        #about {
-            background: var(--light);
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .skill-list li:last-child {
-            border-bottom: none;
-        }
-
-        /* Education */
-        #education {
-            background: var(--light);
-        }
-
-        .education-content {
-            max-width: 700px;
-            margin: 0 auto;
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
-        }
-
-        .education-content h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-content .university {
-            color: var(--text);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-content .year {
-            color: #64748b;
-            font-style: italic;
-        }
-
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .contact-item {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item a {
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: var(--primary);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background: white;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                padding: 2rem 0;
-            }
-
-            nav ul.active {
-                left: 0;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .tagline {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dhirendra Singh — Portfolio</title>
+  <meta name="description" content="Dhirendra Singh — Computer Science student building modern web applications." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="images/profile.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">DS</div>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul id="navMenu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">
+        <img src="images/profile.svg" alt="logo" class="brand-img" />
+        <span class="brand-text">Dhirendra Singh</span>
+      </a>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+      <nav id="main-nav" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn small" href="resume.pdf" download>Download Resume</a>
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">🌙</button>
+      </nav>
+
+      <button id="nav-toggle" class="hamburger" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
         <div class="hero-content">
-            <h1>Dhirendra Singh</h1>
-            <p class="tagline">Computer Science Student | Web Developer</p>
-            <p class="intro">Passionate about building modern web applications and creating elegant solutions to complex problems.</p>
-            <a href="#contact" class="btn">Get In Touch</a>
+          <h1 class="hero-title">Hi, I’m <span class="accent">Dhirendra Singh</span></h1>
+          <p class="hero-subtitle" id="typewriter">Computer Science student — building modern web applications.</p>
+          <p class="lead">I build responsive, accessible websites and enjoy learning full-stack development and AI. Currently focused on React and backend APIs.</p>
+
+          <div class="hero-ctas">
+            <a href="contact.html" class="btn">Hire Me</a>
+            <a href="projects.html" class="btn ghost">View Projects</a>
+            <a href="resume.pdf" class="btn outline" download>Download Resume</a>
+          </div>
+
+          <ul class="hero-skills">
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Python</li>
+            <li>Node.js</li>
+            <li>Responsive Design</li>
+          </ul>
         </div>
+
+        <div class="hero-image">
+          <img src="images/profile.svg" alt="Profile photo" />
+        </div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img">🌐</div>
-                    <div class="project-content">
-                        <h3 class="project-title">E-Commerce Platform</h3>
-                        <p class="project-desc">A full-stack e-commerce website with user authentication, shopping cart, and payment integration.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo →</a>
-                            <a href="#" class="project-link">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">📱</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Weather Dashboard</h3>
-                        <p class="project-desc">Real-time weather application using REST API with beautiful UI and location-based forecasts.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">API</span>
-                            <span class="tech-tag">CSS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo →</a>
-                            <a href="#" class="project-link">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">🤖</div>
-                    <div class="project-content">
-                        <h3 class="project-title">AI Chatbot</h3>
-                        <p class="project-desc">Machine learning chatbot using natural language processing for customer support automation.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">NLP</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo →</a>
-                            <a href="#" class="project-link">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">📊</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Portfolio Tracker</h3>
-                        <p class="project-desc">Investment portfolio management tool with real-time stock prices and analytics dashboard.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Chart.js</span>
-                            <span class="tech-tag">Firebase</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo →</a>
-                            <a href="#" class="project-link">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
+    <section class="preview container">
+      <h2>Featured Projects</h2>
+      <div class="projects-grid">
+        <article class="card project-card">
+          <img class="card-thumb" src="images/project1.svg" alt="Project 1 screenshot" />
+          <div class="card-body">
+            <h3><a href="projects.html#project-1">Notes App</a></h3>
+            <p>Simple full-stack notes application with authentication and CRUD features. Learnt REST APIs and JWT auth.</p>
+            <p class="meta">Tech: React, Node.js, Express, MongoDB</p>
+            <div class="card-actions">
+              <a href="#" class="link">Live</a>
+              <a href="#" class="link">GitHub</a>
             </div>
-        </div>
-    </section>
+          </div>
+        </article>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <p>I'm a final-year Computer Science student with a strong passion for full-stack web development and artificial intelligence. I love creating clean, responsive websites and learning new technologies.</p>
-                <p>What drives me is the excitement of solving complex problems through code and building applications that make a real difference in people's lives. Whether it's designing intuitive user interfaces or optimizing backend systems, I'm always eager to take on new challenges.</p>
-                <p>Currently, I'm focused on mastering React and exploring cloud technologies while working on personal projects that push my boundaries and expand my skill set.</p>
+        <article class="card project-card">
+          <img class="card-thumb" src="images/project2.svg" alt="Project 2 screenshot" />
+          <div class="card-body">
+            <h3><a href="projects.html#project-2">Portfolio Template</a></h3>
+            <p>A responsive portfolio template with theme toggle, smooth scroll and accessible navigation.</p>
+            <p class="meta">Tech: HTML, CSS, JS</p>
+            <div class="card-actions">
+              <a href="#" class="link">Live</a>
+              <a href="#" class="link">GitHub</a>
             </div>
-        </div>
-    </section>
+          </div>
+        </article>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <ul class="skill-list">
-                        <li>C++</li>
-                        <li>Python</li>
-                        <li>JavaScript</li>
-                        <li>Java</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Frameworks</h3>
-                    <ul class="skill-list">
-                        <li>React</li>
-                        <li>Node.js</li>
-                        <li>Flask</li>
-                        <li>Express.js</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & Technologies</h3>
-                    <ul class="skill-list">
-                        <li>Git & GitHub</li>
-                        <li>VS Code</li>
-                        <li>MongoDB</li>
-                        <li>MySQL</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Other Skills</h3>
-                    <ul class="skill-list">
-                        <li>Responsive Design</li>
-                        <li>REST APIs</li>
-                        <li>UI/UX Design</li>
-                        <li>Problem Solving</li>
-                    </ul>
-                </div>
+        <article class="card project-card">
+          <img class="card-thumb" src="images/project3.svg" alt="Project 3 screenshot" />
+          <div class="card-body">
+            <h3><a href="projects.html#project-3">ML Classifier</a></h3>
+            <p>Prototype image classifier using Python and TensorFlow. Explored model training and deployment ideas.</p>
+            <p class="meta">Tech: Python, TensorFlow</p>
+            <div class="card-actions">
+              <a href="#" class="link">Details</a>
+              <a href="#" class="link">GitHub</a>
             </div>
-        </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="center">
+        <a href="projects.html" class="btn">See All Projects</a>
+      </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-content">
-                <h3>B.Tech in Computer Science</h3>
-                <p class="university">XYZ University</p>
-                <p class="year">2022 - 2026</p>
-                <p style="margin-top: 1rem; color: var(--text);">Relevant coursework: Data Structures, Algorithms, Web Development, Database Management, Artificial Intelligence, Operating Systems</p>
-            </div>
+    <section class="about container" id="about">
+      <div class="about-grid">
+        <div>
+          <h2>About Me</h2>
+          <p>I’m a Computer Science student passionate about full-stack web development and machine learning. I enjoy solving problems, building clean user interfaces, and learning new technologies.</p>
+          <p>Currently learning React, TypeScript and exploring backend systems. I like working on projects that combine frontend UX and backend reliability.</p>
+
+          <h3>Education</h3>
+          <p>B.Tech in Computer Science — XYZ University (2022–2026)</p>
+
+          <h3>Tools & Technologies</h3>
+          <ul class="skill-list">
+            <li>JavaScript / TypeScript</li>
+            <li>React / Redux</li>
+            <li>Node.js / Express</li>
+            <li>Python / TensorFlow</li>
+            <li>Git, GitHub, VS Code</li>
+          </ul>
+
         </div>
+        <div class="about-card card">
+          <h3>Quick facts</h3>
+          <ul class="facts">
+            <li><strong>Location:</strong> Your City, Country</li>
+            <li><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></li>
+            <li><strong>Open to:</strong> Internships, Freelance</li>
+            <li><strong>Available:</strong> Immediately</li>
+          </ul>
+          <a class="btn" href="contact.html">Contact Me</a>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <a href="mailto:dhirendra@example.com">dhirendra@example.com</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">💼</div>
-                    <h3>LinkedIn</h3>
-                    <a href="https://linkedin.com/in/dhirendra" target="_blank">linkedin.com/in/dhirendra</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">💻</div>
-                    <h3>GitHub</h3>
-                    <a href="https://github.com/dhirendra" target="_blank">github.com/dhirendra</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📄</div>
-                    <h3>Resume</h3>
-                    <a href="#" download>Download Resume</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Dhirendra Singh. All rights reserved.</p>
-        <p>Built with passion and dedication</p>
-    </footer>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="images/profile.svg" alt="logo" class="brand-img" />
+          <span class="brand-text">Dhirendra Singh</span>
+        </a>
+        <p class="muted">Computer Science student building modern web applications.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p><a href="https://github.com/Dhirendra-singh11" target="_blank" rel="noopener">GitHub</a> · <a href="#" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <nav class="footer-links">
+          <a href="projects.html">Projects</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container center muted small">© <span id="year"></span> Dhirendra Singh — Built with ❤️</div>
+  </footer>
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('active');
-        }
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navMenu').classList.remove('active');
-            });
-        });
-
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-    </script>
+  <script src="js/script.js"></script>
 </body>
-</html> 
+</html>
