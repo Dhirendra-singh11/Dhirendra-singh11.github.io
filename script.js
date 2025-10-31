@@ -1,178 +1,99 @@
-// Mobile Navigation Toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('active');
-    });
-});
-
-// Active Navigation Link on Scroll
-const sections = document.querySelectorAll('section');
-const navLinksAll = document.querySelectorAll('.nav-link');
-
-window.addEventListener('scroll', () => {
-    let current = '';
+// Fade-in on page load
+window.addEventListener('load', function() {
+    // Fade in the entire body first
+    document.body.classList.add('loaded');
     
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
+    // Then fade in individual sections with staggered delay
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section, index) => {
+        section.classList.add('fade-in');
+        setTimeout(() => {
+            section.classList.add('visible');
+        }, index * 200); // Stagger the animation
     });
     
-    navLinksAll.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === current) {
-            link.classList.add('active');
-        }
-    });
+    // Fade in navigation
+    const nav = document.querySelector('nav');
+    nav.classList.add('fade-in', 'visible');
+    
+    // Fade in footer
+    const footer = document.querySelector('footer');
+    footer.classList.add('fade-in');
+    setTimeout(() => {
+        footer.classList.add('visible');
+    }, 800);
 });
 
-// Smooth Scroll for Navigation Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Navbar Background on Scroll
-const navbar = document.querySelector('.navbar');
-
+// Progress Bar
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        navbar.style.boxShadow = '0 10px 30px -10px rgba(2, 12, 27, 0.9)';
+    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const currentProgress = (window.pageYOffset / totalScroll) * 100;
+    document.getElementById('progressBar').style.transform = `scaleX(${currentProgress / 100})`;
+});
+
+// Mobile Menu Toggle
+document.getElementById('mobileMenuButton').addEventListener('click', () => {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('open');
+    
+    // Change icon
+    const icon = document.querySelector('#mobileMenuButton i');
+    if (mobileMenu.classList.contains('open')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
     } else {
-        navbar.style.boxShadow = '0 10px 30px -10px rgba(2, 12, 27, 0.7)';
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
     }
 });
 
-// Intersection Observer for Animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+// Scroll to Section
+function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        
+        // Close mobile menu if open
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            const icon = document.querySelector('#mobileMenuButton i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
         }
-    });
-}, observerOptions);
-
-// Observe all sections and cards
-document.querySelectorAll('section, .skill-card, .project-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
-
-// Form Submission Handler
-const contactForm = document.querySelector('.contact-form');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form values
-    const name = contactForm.querySelector('input[type="text"]').value;
-    const email = contactForm.querySelector('input[type="email"]').value;
-    const message = contactForm.querySelector('textarea').value;
-    
-    // Here you would typically send the data to a server
-    console.log('Form submitted:', { name, email, message });
-    
-    // Show success message
-    alert('Thank you for your message! I will get back to you soon.');
-    
-    // Reset form
-    contactForm.reset();
-});
-
-// Add hover effect to project cards
-const projectCards = document.querySelectorAll('.project-card');
-
-projectCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transition = 'all 0.3s ease';
-    });
-});
-
-// Add typing effect to hero subtitle
-const heroSubtitle = document.querySelector('.hero-subtitle');
-const text = heroSubtitle.textContent;
-heroSubtitle.textContent = '';
-let index = 0;
-
-function typeText() {
-    if (index < text.length) {
-        heroSubtitle.textContent += text.charAt(index);
-        index++;
-        setTimeout(typeText, 100);
     }
 }
 
-// Start typing effect after page loads
-window.addEventListener('load', () => {
-    setTimeout(typeText, 1000);
-});
-
-// Parallax effect on hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroContent = document.querySelector('.hero-content');
+// Scroll Achievements
+function scrollAchievements(direction) {
+    const container = document.getElementById('achievementsContainer');
+    const scrollAmount = 350;
     
-    if (heroContent) {
-        heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-        heroContent.style.opacity = 1 - (scrolled / 700);
+    if (container) {
+        container.scrollBy({
+            left: direction === 'left' ? -scrollAmount : scrollAmount,
+            behavior: 'smooth'
+        });
     }
-});
+}
 
-// Add cursor trail effect
-let cursorTrail = [];
-const trailLength = 10;
+// Theme Toggle
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.body.classList.add("dark");
+    }
+  });
 
-document.addEventListener('mousemove', (e) => {
-    cursorTrail.push({ x: e.clientX, y: e.clientY });
+document.getElementById('themeToggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark');
     
-    if (cursorTrail.length > trailLength) {
-        cursorTrail.shift();
+    // Change icon
+    const icon = document.querySelector('#themeToggle i');
+    if (document.body.classList.contains('dark')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
     }
-});
-
-// Prevent navigation from hiding behind navbar
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        const navbarHeight = navbar.offsetHeight;
-        
-        if (target) {
-            const targetPosition = target.offsetTop - navbarHeight;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
 });
