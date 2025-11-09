@@ -1,6 +1,7 @@
 :root {
     --blue-50: #eff6ff;
     --blue-100: #dbeafe;
+    --blue-500: #4671cd;
     --blue-600: #2563eb;
     --blue-700: #1d4ed8;
     --gray-50: #f9fafb;
@@ -409,31 +410,36 @@ body.dark .secondary-button:hover {
 }
 
 .code-card-inner {
-    
+
     position: relative;
     background-color: var(--gray-900);
     border: 1px solid var(--gray-700);
     padding: 1.5rem;
     border-radius: 1rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    animation: gentle-tilt 10s 
-cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite;
+    animation: gentle-tilt 10s cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite;
     transform-style: preserve-3d;
 }
+
 @keyframes gentle-tilt {
-            0%, 100% {
-                transform: rotateX(0.5deg) rotateY(-0.5deg);
-            }
-            25% {
-                transform: rotateX(-0.5deg) rotateY(0.5deg);
-            }
-            50% {
-                transform: rotateX(-0.5deg) rotateY(0.5deg);
-            }
-            75% {
-                transform: rotateX(-0.5deg) rotateY(-0.5deg);
-            }
-        }
+
+    0%,
+    100% {
+        transform: rotateX(0.5deg) rotateY(-0.5deg);
+    }
+
+    25% {
+        transform: rotateX(-0.5deg) rotateY(0.5deg);
+    }
+
+    50% {
+        transform: rotateX(-0.5deg) rotateY(0.5deg);
+    }
+
+    75% {
+        transform: rotateX(-0.5deg) rotateY(-0.5deg);
+    }
+}
 
 body.dark .code-card-inner {
     background-color: var(--gray-800);
@@ -525,13 +531,15 @@ body.dark .code-card-inner {
         font-size: 2.25rem;
     }
 }
-.section-line{
+
+.section-line {
     background-color: var(--blue-600);
-    height:0.313rem;
-    width:4.188rem;
+    height: 0.313rem;
+    width: 4.188rem;
     border-radius: 1.875rem;
     margin-bottom: 3rem;
 }
+
 .section-subtitle {
     color: var(--gray-600);
     max-width: 63rem;
@@ -676,10 +684,11 @@ body.dark .about-card-item-text {
     border: 4px solid rgba(37, 99, 235, 0.2);
     overflow: hidden;
 }
-.profile-photo{
+
+.profile-photo {
     width: 100%;
-    height:100%;
-    object-fit:cover;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
@@ -816,8 +825,69 @@ body.dark .project-card {
     background-color: var(--gray-200);
     position: relative;
     overflow: hidden;
+    background-color: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
+.image-bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--blue-500);
+}
+
+.screenshot {
+    position: absolute;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    
+}
+
+.project-gif {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+}
+.project-gif.first{
+        top: 35%;
+    left: 8%;
+    transform: rotate(-8deg);
+    z-index: 1;
+}
+.project-gif.second {
+    top: 20%;
+    right: 8%;
+    transform: rotate(8deg);
+    z-index: 2;
+}
+
+.screenshot.first {
+    top: 35%;
+    left: 8%;
+    transform: rotate(-8deg);
+    z-index: 1;
+}
+
+.screenshot.second {
+    top: 20%;
+    right: 8%;
+    transform: rotate(8deg);
+    z-index: 2;
+}
+
+.project-card:hover .screenshot {
+    transform: scale(1.05) rotate(0deg);
+}
+.project-card:hover .project-gif {
+    transform: scale(1.05) rotate(0deg);
+}
 body.dark .project-image {
     background-color: var(--gray-800);
 }
@@ -900,6 +970,7 @@ body.dark .project-tag {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    width: 6.938rem;
     border: 1px solid var(--gray-300);
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
@@ -1475,5 +1546,3 @@ body.dark .footer-description {
     z-index: 30;
     border: none;
 }
-
-
